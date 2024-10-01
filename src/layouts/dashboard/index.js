@@ -34,7 +34,7 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 // Dashboard components
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
-
+import DataFetchingComponent from "./DataFetchingComponent";
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
@@ -43,6 +43,7 @@ function Dashboard() {
     <DashboardLayout>
       <DashboardNavbar />
       <h1>luthanhy</h1>
+      <DataFetchingComponent></DataFetchingComponent>
       <MDBox py={3}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
@@ -139,7 +140,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="primary"
                 icon="person_add"
-                title="Số lượng bài hái fail"
+                title="Số lượng Proxy Test Không Thành công"
                 count="+91"
                 percentage={{
                   color: "success",
