@@ -35,12 +35,14 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 
+
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
 
   return (
     <DashboardLayout>
       <DashboardNavbar />
+      <h1>luthanhy</h1>
       <MDBox py={3}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
@@ -48,7 +50,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="dark"
                 icon="weekend"
-                title="Bookings"
+                title="Số lượng Proxy active"
                 count={281}
                 percentage={{
                   color: "success",
@@ -62,7 +64,7 @@ function Dashboard() {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 icon="leaderboard"
-                title="Today's Users"
+                title="Số lượng Song Request "
                 count="2,300"
                 percentage={{
                   color: "success",
@@ -77,7 +79,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="success"
                 icon="store"
-                title="Revenue"
+                title="Số lượng bài success"
                 count="34k"
                 percentage={{
                   color: "success",
@@ -92,7 +94,67 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="primary"
                 icon="person_add"
-                title="Followers"
+                title="Số lượng bài hái fail"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Existing User Requests"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Agv Down Song"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Số lượng bài hái fail"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Số lượng Proxy bị khóa"
                 count="+91"
                 percentage={{
                   color: "success",
@@ -161,3 +223,4 @@ function Dashboard() {
 }
 
 export default Dashboard;
+ 

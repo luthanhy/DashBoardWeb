@@ -167,7 +167,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
             sx={(theme) => sidenavLogoLabel(theme, { miniSidenav })}
           >
             <MDTypography component="h6" variant="button" fontWeight="medium" color={textColor}>
-              {brandName}
+              Simpia DashBoard
             </MDTypography>
           </MDBox>
         </MDBox>
@@ -180,7 +180,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
       />
       <List>{renderRoutes}</List>
       <MDBox p={2} mt="auto">
-        <MDButton
+        {/* <MDButton
           component="a"
           href="https://www.creative-tim.com/product/material-dashboard-pro-react"
           target="_blank"
@@ -190,7 +190,7 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
           fullWidth
         >
           upgrade to pro
-        </MDButton>
+        </MDButton> */}
       </MDBox>
     </SidenavRoot>
   );
