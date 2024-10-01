@@ -57,7 +57,11 @@ const DataFetchingComponent = () => {
     if (!Array.isArray(data)) return 0; // Nếu không phải là mảng, trả về 0
     return data.filter(item => item.status === 'error').length; // Đếm các mục có status là 'success'
   };
-
+  const countProxyTestFail = (data) => {
+    if (!Array.isArray(data)) return 0; // Nếu không phải là mảng, trả về 0
+    return data.filter(item => item.status === 'issues').length; // Đếm các mục có status là 'success'
+  }
+  const totalProxyTestFail = responseData && responseData.data ? countProxyTestFail(responseData.data) : 0;
   // Đảm bảo responseData là một mảng
   const successCount = responseData && responseData.data ? countSuccess(responseData.data) : 0;
   const failCount = responseData && responseData.data ? countFail(responseData.data) : 0;
@@ -105,8 +109,8 @@ const DataFetchingComponent = () => {
       <h2>Số lượng bài hát request fail {totalSongFailedCount} </h2>
       <h2>Số lượng bài hát đã tồn tại {totalSongExitsCount}</h2>
       <h2>Số lượng bài hát tải qua youtobe thành công {totalSongDownYoutobeSuccess} </h2>
+      <h2>Số lượng proxy test không thành công {totalProxyTestFail} </h2>
     </div>
   );
 };
-
 export default DataFetchingComponent;
