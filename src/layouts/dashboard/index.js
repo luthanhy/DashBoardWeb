@@ -1,19 +1,3 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
 import Grid from "@mui/material/Grid";
 
 // Material Dashboard 2 React components
@@ -35,14 +19,13 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 import DataFetchingComponent from "./DataFetchingComponent";
+// import {responseData} from "./DataFetchingComponent";
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
-
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <h1>luthanhy</h1>
       <DataFetchingComponent></DataFetchingComponent>
       <MDBox py={3}>
         <Grid container spacing={3}>
@@ -57,80 +40,6 @@ function Dashboard() {
                   color: "success",
                   amount: "+55%",
                   label: "than lask week",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                icon="leaderboard"
-                title="Số lượng Song Request "
-                count="2,300"
-                percentage={{
-                  color: "success",
-                  amount: "+3%",
-                  label: "than last month",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="success"
-                icon="store"
-                title="Số lượng bài success"
-                count="34k"
-                percentage={{
-                  color: "success",
-                  amount: "+1%",
-                  label: "than yesterday",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="primary"
-                icon="person_add"
-                title="Số lượng bài hái fail"
-                count="+91"
-                percentage={{
-                  color: "success",
-                  amount: "",
-                  label: "Just updated",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="primary"
-                icon="person_add"
-                title="Existing User Requests"
-                count="+91"
-                percentage={{
-                  color: "success",
-                  amount: "",
-                  label: "Just updated",
-                }}
-              />
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="primary"
-                icon="person_add"
-                title="Agv Down Song"
-                count="+91"
-                percentage={{
-                  color: "success",
-                  amount: "",
-                  label: "Just updated",
                 }}
               />
             </MDBox>
@@ -165,6 +74,202 @@ function Dashboard() {
               />
             </MDBox>
           </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                icon="leaderboard"
+                title="Số lượng Song Request "
+                count="2,300"
+                percentage={{
+                  color: "success",
+                  amount: "+3%",
+                  label: "than last month",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="success"
+                icon="store"
+                title="Số lượng bài down Youtube success"
+                count="34k"
+                percentage={{
+                  color: "success",
+                  amount: "+1%",
+                  label: "than yesterday",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Số lượng bài hái down Youtube fail"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Số lượng bài hái down Youtube exits "
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Số lượng bài hát Gen Success"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Số lượng bài hát Gen Fail"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Số lượng bài lấy Vocal Success"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Số lượng bài lấy Vocal Fail"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Số lượng bài hát Sử dụng được trong App"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Agv time Down Youtube"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Agv time Gen Song"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Agv time Get Vocal"
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Agv time User đợi để chơi bài bát "
+                count="+91"
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
         </Grid>
         <MDBox mt={4.5}>
           <Grid container spacing={3}>
@@ -172,21 +277,21 @@ function Dashboard() {
               <MDBox mb={3}>
                 <ReportsBarChart
                   color="info"
-                  title="website views"
-                  description="Last Campaign Performance"
-                  date="campaign sent 2 days ago"
+                  title="Daily Request Song"
+                  description="Số bài hát user request"
+                  date="update 1 hour ago"
                   chart={reportsBarChartData}
                 />
               </MDBox>
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
-                <ReportsLineChart
+                <ReportsBarChart
                   color="success"
-                  title="daily sales"
+                  title="Số bài hát user request Success"
                   description={
                     <>
-                      (<strong>+15%</strong>) increase in today sales.
+                     Số bài hát user request Success theo ngày
                     </>
                   }
                   date="updated 4 min ago"
@@ -196,10 +301,10 @@ function Dashboard() {
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
               <MDBox mb={3}>
-                <ReportsLineChart
+                <ReportsBarChart
                   color="dark"
-                  title="completed tasks"
-                  description="Last Campaign Performance"
+                  title="Số bài hát user request Fail"
+                  description="Số bài hát user request Fail theo ngày"
                   date="just updated"
                   chart={tasks}
                 />
@@ -208,7 +313,7 @@ function Dashboard() {
           </Grid>
         </MDBox>
         <MDBox>
-          <Grid container spacing={3}>
+          <Grid container spacing={2}>
             <Grid item xs={12} md={6} lg={8}>
               <Projects />
             </Grid>
@@ -218,7 +323,7 @@ function Dashboard() {
           </Grid>
         </MDBox>
       </MDBox>
-      <Footer />
+      {/* <Footer /> */}
     </DashboardLayout>
   );
 }

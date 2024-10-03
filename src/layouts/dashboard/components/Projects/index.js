@@ -1,104 +1,54 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.2.0
-=========================================================
+import React from 'react';
+import { Grid, Card, CardContent, Typography, Paper } from '@mui/material';
 
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+// Dữ liệu mẫu
+const data = [
+  { id: 1, name: 'Project 1', description: 'Description for Project 1', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 2, name: 'Project 2', description: 'Description for Project 2', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 3, name: 'Project 3', description: 'Description for Project 3', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 4, name: 'Project 4', description: 'Description for Project 4', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 5, name: 'Project 5', description: 'Description for Project 5', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 6, name: 'Project 6', description: 'Description for Project 6', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  // Thêm dữ liệu mẫu nếu cần để kiểm tra cuộn
+  { id: 7, name: 'Project 7', description: 'Description for Project 7', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 8, name: 'Project 8', description: 'Description for Project 8', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 8, name: 'Project 8', description: 'Description for Project 8', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 8, name: 'Project 8', description: 'Description for Project 8', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 8, name: 'Project 8', description: 'Description for Project 8', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 8, name: 'Project 8', description: 'Description for Project 8', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 8, name: 'Project 8', description: 'Description for Project 8', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+  { id: 8, name: 'Project 8', description: 'Description for Project 8', timeVocal: 's', timeDown: 'v', timeDown2: 'v' },
+];
 
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-import { useState } from "react";
-
-// @mui material components
-import Card from "@mui/material/Card";
-import Icon from "@mui/material/Icon";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-
-// Material Dashboard 2 React components
-import MDBox from "components/MDBox";
-import MDTypography from "components/MDTypography";
-
-// Material Dashboard 2 React examples
-import DataTable from "examples/Tables/DataTable";
-
-// Data
-import data from "layouts/dashboard/components/Projects/data";
-
-function Projects() {
-  const { columns, rows } = data();
-  const [menu, setMenu] = useState(null);
-
-  const openMenu = ({ currentTarget }) => setMenu(currentTarget);
-  const closeMenu = () => setMenu(null);
-
-  const renderMenu = (
-    <Menu
-      id="simple-menu"
-      anchorEl={menu}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "left",
-      }}
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={Boolean(menu)}
-      onClose={closeMenu}
-    >
-      <MenuItem onClick={closeMenu}>Action</MenuItem>
-      <MenuItem onClick={closeMenu}>Another action</MenuItem>
-      <MenuItem onClick={closeMenu}>Something else</MenuItem>
-    </Menu>
-  );
-
-  return (
-    <Card>
-      <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-        <MDBox>
-          <MDTypography variant="h6" gutterBottom>
-            Projects
-          </MDTypography>
-          <MDBox display="flex" alignItems="center" lineHeight={0}>
-            <Icon
-              sx={{
-                fontWeight: "bold",
-                color: ({ palette: { info } }) => info.main,
-                mt: -0.5,
-              }}
-            >
-              done
-            </Icon>
-            <MDTypography variant="button" fontWeight="regular" color="text">
-              &nbsp;<strong>30 done</strong> this month
-            </MDTypography>
-          </MDBox>
-        </MDBox>
-        <MDBox color="text" px={2}>
-          <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small" onClick={openMenu}>
-            more_vert
-          </Icon>
-        </MDBox>
-        {renderMenu}
-      </MDBox>
-      <MDBox>
-        <DataTable
-          table={{ columns, rows }}
-          showTotalEntries={false}
-          isSorted={false}
-          noEndBorder
-          entriesPerPage={false}
-        />
-      </MDBox>
-    </Card>
-  );
-}
+// Component hiển thị danh sách projects dưới dạng card
+const Projects = () => (
+  <div style={{ maxHeight: '800px', overflowY: 'auto', marginTop: '7px' }}> {/* Thêm scroll ở đây */}
+    <Grid container spacing={2}>
+      {data.map((project) => (
+        <Grid item xs={12} sm={6} md={4} key={project.id}>
+          <Card elevation={3}>
+            <CardContent>
+              <Typography variant="h5" component="div" style={{ fontWeight: 'bold' }}>
+                {project.name}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {project.description}
+              </Typography>
+              <Typography variant="body2" color="text.primary">
+                <strong>timeVocal:</strong> {project.timeVocal}
+              </Typography>
+              <Typography variant="body2" color="text.primary">
+                <strong>timeDown:</strong> {project.timeDown}
+              </Typography>
+              <Typography variant="body2" color="text.primary">
+                <strong>timeDown2:</strong> {project.timeDown2}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
+  </div>
+);
 
 export default Projects;
