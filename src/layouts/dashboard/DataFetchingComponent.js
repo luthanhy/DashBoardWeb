@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-const successCounFinal = 0;
 const DataFetchingComponent = () => {
   const [responseData, setResponseData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -245,31 +244,24 @@ const DataFetchingComponent = () => {
      }
     //  console.log(timeGenService);
       const agvTotalTimeGetVocal = TimeGetVocal/lengthtimegetvocal;
-      return (
-      <div>
-        <h1>Response Data:</h1>
-        <h2>Number of Success Statuses: {successCount}</h2>
-        <h2>Number of Fail Statuses: {failCount}</h2>
-        <h2>Number of Requested Songs: {totalSongCount}</h2>
-        <h2>Number of Failed Song Requests: {totalSongFailedCount}</h2>
-        <h2>Number of Existing Songs: {totalSongExitsCount}</h2>
-        <h2>Number of Successful YouTube Downloads: {totalSongDownYoutobeSuccess}</h2>
-        <h2>Number of Proxy Test Failures: {totalProxyTestFail}</h2>
-        <h2>Number of gen song success tính từ ngày 1/10/2024 : {totalSongGenSuccess} </h2>
-        <h2>Number of gen song fail : {totalSongGenFail}</h2>
-        <h2>Number of get vocal song success {totalgetVocalSuccess}</h2>
-        <h2>Number of gen song fail : {tottalgetVocalFail}</h2>
-        <h2>Number of total status use  fail: {tototalFailStatus}</h2>
-        <h2>Number of total status use success: {totalSatusSuccess}</h2>
-        <h2>Agv Time Down Youtube {agvTimeDownYoutube}</h2>
-        <h2>Agv Time Service {agvTotalService} </h2>
-        <h2>Agv Time Gen Service {agvTotalTimeGenService} </h2>
-        <h2>Agv Time Get Vocal {agvTotalTimeGetVocal}</h2>
-      </div>
-    );
+      return {
+        successCount,
+        failCount,
+        totalSongCount,
+        totalSongFailedCount,
+        totalSongExitsCount,
+        totalSongDownYoutobeSuccess,
+        totalProxyTestFail,
+        totalSongGenSuccess,
+        totalSongGenFail,
+        totalgetVocalSuccess,
+        tottalgetVocalFail,
+        tototalFailStatus,
+        totalSatusSuccess,
+        agvTimeDownYoutube,
+        agvTotalService,
+        agvTotalTimeGenService,
+        agvTotalTimeGetVocal,
+      };
   };
-  export const responseData = {
-    successCounFinal,
-
-  }
 export default DataFetchingComponent;

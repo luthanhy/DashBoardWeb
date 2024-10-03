@@ -22,11 +22,13 @@ import DataFetchingComponent from "./DataFetchingComponent";
 // import {responseData} from "./DataFetchingComponent";
 
 function Dashboard() {
+  const fetchedData = DataFetchingComponent();
   const { sales, tasks } = reportsLineChartData;
+  console.log("luthanhy",fetchedData.successCount);
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <DataFetchingComponent></DataFetchingComponent>
+      {/* <DataFetchingComponent></DataFetchingComponent> */}
       <MDBox py={3}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
@@ -35,7 +37,7 @@ function Dashboard() {
                 color="dark"
                 icon="weekend"
                 title="Số lượng Proxy active"
-                count={281}
+                count={fetchedData.successCount}
                 percentage={{
                   color: "success",
                   amount: "+55%",
@@ -50,7 +52,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Số lượng Proxy Test Không Thành công"
-                count="+91"
+                count={fetchedData.totalProxyTestFail}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -65,7 +67,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Số lượng Proxy bị khóa"
-                count="+91"
+                count={fetchedData.failCount}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -79,7 +81,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 icon="leaderboard"
                 title="Số lượng Song Request "
-                count="2,300"
+                count={fetchedData.totalSongCount}
                 percentage={{
                   color: "success",
                   amount: "+3%",
@@ -94,7 +96,7 @@ function Dashboard() {
                 color="success"
                 icon="store"
                 title="Số lượng bài down Youtube success"
-                count="34k"
+                count={fetchedData.totalSongDownYoutobeSuccess}
                 percentage={{
                   color: "success",
                   amount: "+1%",
@@ -109,7 +111,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Số lượng bài hái down Youtube fail"
-                count="+91"
+                count={fetchedData.totalSongFailedCount}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -124,7 +126,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Số lượng bài hái down Youtube exits "
-                count="+91"
+                count={fetchedData.totalSongExitsCount}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -139,7 +141,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Số lượng bài hát Gen Success"
-                count="+91"
+                count={fetchedData.totalSongGenSuccess}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -154,7 +156,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Số lượng bài hát Gen Fail"
-                count="+91"
+                count={fetchedData.totalSongGenFail}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -169,7 +171,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Số lượng bài lấy Vocal Success"
-                count="+91"
+                count={fetchedData.totalgetVocalSuccess}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -185,7 +187,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Số lượng bài lấy Vocal Fail"
-                count="+91"
+                count={fetchedData.tottalgetVocalFail}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -200,7 +202,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Số lượng bài hát Sử dụng được trong App"
-                count="+91"
+                count={fetchedData.totalSatusSuccess}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -216,7 +218,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Agv time Down Youtube"
-                count="+91"
+                count={fetchedData.agvTimeDownYoutube}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -231,7 +233,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Agv time Gen Song"
-                count="+91"
+                count={fetchedData.agvTotalTimeGenService}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -246,7 +248,7 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Agv time Get Vocal"
-                count="+91"
+                count= {fetchedData.agvTotalTimeGetVocal}
                 percentage={{
                   color: "success",
                   amount: "",
@@ -260,8 +262,8 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="primary"
                 icon="person_add"
-                title="Agv time User đợi để chơi bài bát "
-                count="+91"
+                title="Agv time Service"
+                count={fetchedData.agvTotalService}
                 percentage={{
                   color: "success",
                   amount: "",
