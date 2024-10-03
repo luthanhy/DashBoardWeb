@@ -143,7 +143,11 @@ const DataFetchingComponent = () => {
   //   : 0;
   // const timeDownLoadYoutube =   JSON.parse(responseData.data  );
   // for(let i=0; i < responseData.)
-  console.log("",responseData.data);
+  const dataResult = responseData.data;
+  
+
+
+
   let totalTimeDownAgvYoutube = 0;
   let lengthDownYoutube = 0;
   for(let i = 0 ; i < responseData.data.length ; i++){
@@ -160,7 +164,7 @@ const DataFetchingComponent = () => {
       totalTimeDownAgvYoutube += totalTimeDownLoad/lengthDown+1;
       lengthDownYoutube = responseData.data.length+1; 
     }
-    const agvTimeDownYoutube =  totalTimeDownAgvYoutube/lengthDownYoutube;
+    const agvTimeDownYoutube =  Math.floor(totalTimeDownAgvYoutube/lengthDownYoutube) + 's';
 
 
     let timeTotalService = 0;
@@ -190,7 +194,7 @@ const DataFetchingComponent = () => {
       //  lengthDownYoutube = responseData.data.length+1; 
      }
  
-     const agvTotalService = timeTotalService/lengthTotalService;
+     const agvTotalService = Math.floor(timeTotalService/lengthTotalService) + 's';
 
      let timeGenService = 0;
      let lengthTimeGenService = 0;
@@ -221,7 +225,7 @@ const DataFetchingComponent = () => {
       //  lengthDownYoutube = responseData.data.length+1; 
      }
     //  console.log(timeGenService);
-     const agvTotalTimeGenService = timeGenService/lengthTimeGenService;
+     const agvTotalTimeGenService = Math.floor(timeGenService/lengthTimeGenService )+ 's';
 
      let TimeGetVocal = 0;
      let lengthtimegetvocal = 0;
@@ -243,7 +247,7 @@ const DataFetchingComponent = () => {
        lengthtimegetvocal += lengthTimeGetVocal+1;
      }
     //  console.log(timeGenService);
-      const agvTotalTimeGetVocal = TimeGetVocal/lengthtimegetvocal;
+      const agvTotalTimeGetVocal = Math.floor(TimeGetVocal/lengthtimegetvocal )+ 's';
       return {
         successCount,
         failCount,
@@ -262,6 +266,7 @@ const DataFetchingComponent = () => {
         agvTotalService,
         agvTotalTimeGenService,
         agvTotalTimeGetVocal,
+        dataResult
       };
   };
 export default DataFetchingComponent;

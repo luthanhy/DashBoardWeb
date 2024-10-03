@@ -19,16 +19,18 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 import DataFetchingComponent from "./DataFetchingComponent";
+import PieChart from "./PieChar";
 // import {responseData} from "./DataFetchingComponent";
 
 function Dashboard() {
   const fetchedData = DataFetchingComponent();
   const { sales, tasks } = reportsLineChartData;
-  console.log("luthanhy",fetchedData.successCount);
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      {/* <DataFetchingComponent></DataFetchingComponent> */}
+      <MDBox display="flex"  justifyContent="center" alignItems="center" py={3}  >
+      <PieChart></PieChart>
+    </MDBox>
       <MDBox py={3}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
@@ -211,7 +213,21 @@ function Dashboard() {
               />
             </MDBox>
           </Grid>
-          
+          <Grid item xs={12} md={6} lg={3}>
+            <MDBox mb={1.5}>
+              <ComplexStatisticsCard
+                color="primary"
+                icon="person_add"
+                title="Số lượng bài hát không  Sử dụng được trong App"
+                count={fetchedData.tototalFailStatus}
+                percentage={{
+                  color: "success",
+                  amount: "",
+                  label: "Just updated",
+                }}
+              />
+            </MDBox>
+          </Grid>
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
@@ -262,7 +278,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="primary"
                 icon="person_add"
-                title="Agv time Service"
+                title="Agv time Total"
                 count={fetchedData.agvTotalService}
                 percentage={{
                   color: "success",
@@ -316,12 +332,12 @@ function Dashboard() {
         </MDBox>
         <MDBox>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6} lg={8}>
+            <Grid item xs={12} md={6} lg={12}>
               <Projects />
             </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            {/* <Grid item xs={12} md={6} lg={4}>
               <OrdersOverview />
-            </Grid>
+            </Grid> */}
           </Grid>
         </MDBox>
       </MDBox>
