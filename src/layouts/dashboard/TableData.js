@@ -27,14 +27,14 @@ const TableData = () => {
 
   // Data for "Today"
   const agvData1 = [
-    { label: 'Pick Proxy Time', time: fetchDataLoad?.agvTimePickProxy1 },
-    { label: 'Download Time', time: fetchDataLoad?.agvTimeDownYoutube1 },
-    { label: 'Sample Rate Time', time: fetchDataLoad?.agvTimeDowmSampleRate1 },
-    { label: 'Process Chord Time', time: fetchDataLoad?.agvTimeDownChord1 },
-    { label: 'Vocal Separation Time', time: fetchDataLoad?.agvTotalTimeGetVocal1 },
-    { label: 'Generation Time', time: fetchDataLoad?.agvTotalTimeGenService1 },
-    { label: 'Mixer chords', time: fetchDataLoad?.agvTimeMix1 },
-    { label: 'Total Time', time: fetchDataLoad?.agvTotalService1 },
+    { label: 'Pick Proxy Time', time: fetchDataLoad?.agvTimePickProxy1,Success: '75%',Failed: '25%'},
+    { label: 'Download Time', time: fetchDataLoad?.agvTimeDownYoutube1,Success: '75%',Failed: '25%' },
+    { label: 'Sample Rate Time', time: fetchDataLoad?.agvTimeDowmSampleRate1,Success: '75%',Failed: '25%' },
+    { label: 'Process Chord Time', time: fetchDataLoad?.agvTimeDownChord1,Success: '75%',Failed: '25%' },
+    { label: 'Vocal Separation Time', time: fetchDataLoad?.agvTotalTimeGetVocal1,Success: '75%',Failed: '25%' },
+    { label: 'Generation Time', time: fetchDataLoad?.agvTotalTimeGenService1,Success: '75%',Failed: '25%' },
+    { label: 'Mixer chords', time: fetchDataLoad?.agvTimeMix1 ,Success: '75%',Failed: '25%'},
+    { label: 'Total Time', time: fetchDataLoad?.agvTotalService1,Success: '75%',Failed: '25%' },
   ];
 
   // Data for other periods (30 days, All)
@@ -80,6 +80,9 @@ const TableData = () => {
           <tr>
             <th>AGV Metric</th>
             <th>Time</th>
+            <th>Success</th>
+            <th>Failed</th>
+
           </tr>
         </thead>
         <tbody>
@@ -87,6 +90,8 @@ const TableData = () => {
             <tr key={index}>
               <td>{item.label}</td>
               <td>{item.time}</td>
+              <td>{item.Success}</td>
+              <td>{item.Failed}</td>
             </tr>
           ))}
         </tbody>
