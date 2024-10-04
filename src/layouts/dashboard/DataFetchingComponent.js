@@ -143,111 +143,123 @@ const DataFetchingComponent = () => {
   //   : 0;
   // const timeDownLoadYoutube =   JSON.parse(responseData.data  );
   // for(let i=0; i < responseData.)
-  const dataResult = responseData.data;
-  
-
-
-
-  let totalTimeDownAgvYoutube = 0;
-  let lengthDownYoutube = 0;
-  for(let i = 0 ; i < responseData.data.length ; i++){
-     let totalTimeDownLoad = 0;
-     let lengthDown = 0;
-    for(let j = 0;j < responseData.data[i].log.length ; j++){
-        let valueTimeDowm = responseData.data[i].log[j].timeDownload;
-        if(valueTimeDowm === null || valueTimeDowm === undefined){
-          valueTimeDowm = 0;
-        }
-        totalTimeDownLoad += valueTimeDowm;
-        lengthDown = responseData.data[i].log.length;
+  const dataResult2 = JSON.parse(JSON.stringify(responseData.data));
+  // dataResult2.splice(1, 1);
+    console.log("luthanhy", dataResult2);
+    for (let i = 0; i < dataResult2.length; i++) {
+      for (let j = 0; j < dataResult2[i].log.length; j++) {
+          if (dataResult2[i].log[j].total_status === null || dataResult2[i].log[j].total_status === undefined || dataResult2[i].log[j].status_total ==="fail"|| dataResult2[i].log[j].status_download ==="existing") {
+            dataResult2[i].log.splice(j, 1);
+            j--;}
       }
-      totalTimeDownAgvYoutube += totalTimeDownLoad/lengthDown+1;
-      lengthDownYoutube = responseData.data.length+1; 
+  }
+
+
+
+  console.log("lutyuio",dataResult2);
+  console.log(responseData.data);
+  function calCulator(statusInfo, dataInput) {
+    let timeDownTotal = 0;
+    let lengthTotal = 0;
+
+    for (let i = 0; i < dataInput.length; i++) {
+        for (let j = 0; j < dataInput[i].log.length; j++) {
+            timeDownTotal += dataInput[i].log[j][statusInfo]; // Sử dụng statusInfo như một biến để truy cập vào thuộc tính tương ứng
+            lengthTotal++;
+        }
     }
-    const agvTimeDownYoutube =  Math.floor(totalTimeDownAgvYoutube/lengthDownYoutube) + 's';
 
+    // Tính trung bình và định dạng số thập phân
+    let averageTimeDown = (timeDownTotal / lengthTotal).toFixed(2) + "s";
 
-    let timeTotalService = 0;
-    let lengthTotalService = 0;
+    return averageTimeDown;
+}
 
-    for(let i = 0 ; i < responseData.data.length ; i++){
-      let totalTimeDownLoad1 = 0;
-      let lengthDown1 = responseData.data[i].log.length;
-     for(let j = 0;j < responseData.data[i].log.length ; j++){
-        //  console.log("result : ",lengthDown1)
-         let valueTimeDowm = responseData.data[i].log[j].time_total;
-         if(valueTimeDowm === null || valueTimeDowm === undefined){
-           valueTimeDowm = 0;
-          //  console.log("cc");
-           lengthDown1--;
-         }
-         totalTimeDownLoad1 += valueTimeDowm;
-       }
+  const agvTimeDownYoutube = calCulator("time_download",dataResult2);
+  const agvTotalTimeGenService = calCulator("time_gen",dataResult2);
+  const agvTotalTimeGetVocal = calCulator("time_vocal",dataResult2);
+  const agvTotalService = calCulator("time_total",dataResult2);
+    // let timeTotalService = 0;
+    // let lengthTotalService = 0;
+
+    // for(let i = 0 ; i < responseData.data.length ; i++){
+    //   let totalTimeDownLoad1 = 0;
+    //   let lengthDown1 = responseData.data[i].log.length;
+    //  for(let j = 0;j < responseData.data[i].log.length ; j++){
+    //     //  console.log("result : ",lengthDown1)
+    //      let valueTimeDowm = responseData.data[i].log[j].time_total;
+    //      if(valueTimeDowm === null || valueTimeDowm === undefined){
+    //        valueTimeDowm = 0;
+    //       //  console.log("cc");
+    //        lengthDown1--;
+    //      }
+    //      totalTimeDownLoad1 += valueTimeDowm;
+    //    }
       //  console.log(lengthDown1);
       //  lengthTotalService += lengthDown1;
-       timeTotalService += totalTimeDownLoad1;
-       lengthTotalService +=  lengthDown1;
+      //  timeTotalService += totalTimeDownLoad1;
+      //  lengthTotalService +=  lengthDown1;
               // console.log( "length",lengthDown1);
       //  console.log( "length",lengthDown1);
       //  console.log( "total",totalTimeDownLoad1);
       //  totalTimeDownAgvYoutube += totalTimeDownLoad/lengthDown;
       //  lengthDownYoutube = responseData.data.length+1; 
-     }
+    //  }
  
-     const agvTotalService = Math.floor(timeTotalService/lengthTotalService) + 's';
+  // const agvTotalService = Math.floor(timeTotalService/lengthTotalService) + 's';
 
-     let timeGenService = 0;
-     let lengthTimeGenService = 0;
+    //  let timeGenService = 0;
+    //  let lengthTimeGenService = 0;
      
-    for(let i = 0 ; i < responseData.data.length ; i++){
-      let totalTimeGen = 0;
-      let lengthTimeGen = responseData.data[i].log.length;
-     for(let j = 0;j < responseData.data[i].log.length ; j++){
-        //  console.log("result : ",lengthDown1)
-         let valueTimeDowm = responseData.data[i].log[j].time_gen;
-         if(valueTimeDowm === null || valueTimeDowm === undefined){
-           valueTimeDowm = 0;
-          //  console.log("cc");
-          lengthTimeGen--;
-         }
-         totalTimeGen += valueTimeDowm;
-        //  lengthTime1 += lengthTimeGen+1;
-       }
-       lengthTimeGenService += lengthTimeGen+1;
-      //  lengthTotalService += lengthDown1;
-      timeGenService += totalTimeGen;
-      // console.log(lengthTime1);
+    // for(let i = 0 ; i < responseData.data.length ; i++){
+    //   let totalTimeGen = 0;
+    //   let lengthTimeGen = responseData.data[i].log.length;
+    //  for(let j = 0;j < responseData.data[i].log.length ; j++){
+    //     //  console.log("result : ",lengthDown1)
+    //      let valueTimeDowm = responseData.data[i].log[j].time_gen;
+    //      if(valueTimeDowm === null || valueTimeDowm === undefined){
+    //        valueTimeDowm = 0;
+    //       //  console.log("cc");
+    //       lengthTimeGen--;
+    //      }
+    //      totalTimeGen += valueTimeDowm;
+    //     //  lengthTime1 += lengthTimeGen+1;
+    //    }
+    //    lengthTimeGenService += lengthTimeGen+1;
+    //   //  lengthTotalService += lengthDown1;
+    //   timeGenService += totalTimeGen;
+    //   // console.log(lengthTime1);
 
-              // console.log( "length",lengthDown1);
-      //  console.log( "length",lengthDown1);
-      //  console.log( "total",totalTimeDownLoad1);
-      //  totalTimeDownAgvYoutube += totalTimeDownLoad/lengthDown;
-      //  lengthDownYoutube = responseData.data.length+1; 
-     }
-    //  console.log(timeGenService);
-     const agvTotalTimeGenService = Math.floor(timeGenService/lengthTimeGenService )+ 's';
+    //           // console.log( "length",lengthDown1);
+    //   //  console.log( "length",lengthDown1);
+    //   //  console.log( "total",totalTimeDownLoad1);
+    //   //  totalTimeDownAgvYoutube += totalTimeDownLoad/lengthDown;
+    //   //  lengthDownYoutube = responseData.data.length+1; 
+    //  }
+    // //  console.log(timeGenService);
+    //  const agvTotalTimeGenService = Math.floor(timeGenService/lengthTimeGenService )+ 's';
 
-     let TimeGetVocal = 0;
-     let lengthtimegetvocal = 0;
-     for(let i = 0 ; i < responseData.data.length ; i++){
-      let totalTimeGetVocal = 0;
-      let lengthTimeGetVocal = responseData.data[i].log.length;
-     for(let j = 0;j < responseData.data[i].log.length ; j++){
-        //  console.log("result : ",lengthDown1)
-         let valueTimeDowm = responseData.data[i].log[j].time_vocal;
-         if(valueTimeDowm === null || valueTimeDowm === undefined){
-           valueTimeDowm = 0;
-          //  console.log("cc");
-          lengthTimeGetVocal--;
-         }
-         totalTimeGetVocal += valueTimeDowm;
-        //  lengthTime1 += lengthTimeGen+1;
-       }
-       TimeGetVocal += totalTimeGetVocal;
-       lengthtimegetvocal += lengthTimeGetVocal+1;
-     }
+    //  let TimeGetVocal = 0;
+    //  let lengthtimegetvocal = 0;
+    //  for(let i = 0 ; i < responseData.data.length ; i++){
+    //   let totalTimeGetVocal = 0;
+    //   let lengthTimeGetVocal = responseData.data[i].log.length;
+    //  for(let j = 0;j < responseData.data[i].log.length ; j++){
+    //     //  console.log("result : ",lengthDown1)
+    //      let valueTimeDowm = responseData.data[i].log[j].time_vocal;
+    //      if(valueTimeDowm === null || valueTimeDowm === undefined){
+    //        valueTimeDowm = 0;
+    //       //  console.log("cc");
+    //       lengthTimeGetVocal--;
+    //      }
+    //      totalTimeGetVocal += valueTimeDowm;
+    //     //  lengthTime1 += lengthTimeGen+1;
+    //    }
+    //    TimeGetVocal += totalTimeGetVocal;
+    //    lengthtimegetvocal += lengthTimeGetVocal+1;
+    //  }
     //  console.log(timeGenService);
-      const agvTotalTimeGetVocal = Math.floor(TimeGetVocal/lengthtimegetvocal )+ 's';
+      // const agvTotalTimeGetVocal = Math.floor(TimeGetVocal/lengthtimegetvocal )+ 's';
       return {
         successCount,
         failCount,
@@ -266,7 +278,7 @@ const DataFetchingComponent = () => {
         agvTotalService,
         agvTotalTimeGenService,
         agvTotalTimeGetVocal,
-        dataResult
+        
       };
   };
 export default DataFetchingComponent;

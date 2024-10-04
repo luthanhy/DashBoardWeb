@@ -4,7 +4,7 @@ import DataFetchingComponent from 'layouts/dashboard/DataFetchingComponent';
 
 function Projects() {
   const dataFetch = DataFetchingComponent();
-  const listData = dataFetch?.dataResult; // Optional chaining để tránh lỗi khi chưa có dữ liệu
+  const listData = dataFetch?.dataResult2; // Optional chaining để tránh lỗi khi chưa có dữ liệu
   console.log(listData);
   // Kiểm tra nếu listData tồn tại và không rỗng
   if (!listData || listData.length === 0) {
