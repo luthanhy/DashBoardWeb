@@ -27,14 +27,14 @@ const TableData = () => {
 
   // Data for "Today"
   const agvData1 = [
-    { label: 'Pick Proxy Time', time: fetchDataLoad?.agvTimePickProxy1,Success: '75%',Failed: '25%'},
-    { label: 'Download Time', time: fetchDataLoad?.agvTimeDownYoutube1,Success: '75%',Failed: '25%' },
-    { label: 'Sample Rate Time', time: fetchDataLoad?.agvTimeDowmSampleRate1,Success: '75%',Failed: '25%' },
-    { label: 'Process Chord Time', time: fetchDataLoad?.agvTimeDownChord1,Success: '75%',Failed: '25%' },
-    { label: 'Vocal Separation Time', time: fetchDataLoad?.agvTotalTimeGetVocal1,Success: '75%',Failed: '25%' },
-    { label: 'Generation Time', time: fetchDataLoad?.agvTotalTimeGenService1,Success: '75%',Failed: '25%' },
-    { label: 'Mixer chords', time: fetchDataLoad?.agvTimeMix1 ,Success: '75%',Failed: '25%'},
-    { label: 'Total Time', time: fetchDataLoad?.agvTotalService1,Success: '75%',Failed: '25%' },
+    { label: 'Pick Proxy Time', time: fetchDataLoad?.agvTimePickProxy1,Success: fetchDataLoad.perSuccessPickProxy1,Failed: fetchDataLoad.perFailPickProxy1},
+    { label: 'Download Time', time: fetchDataLoad?.agvTimeDownYoutube1,Success: fetchDataLoad.perDownloadTimeSuccess1,Failed: fetchDataLoad.perDownloadFail1 },
+    { label: 'Sample Rate Time', time: fetchDataLoad?.agvTimeDowmSampleRate1,Success: fetchDataLoad.perDownSampleRateSuccess1,Failed: fetchDataLoad.perDownSampleRateFail1},
+    { label: 'Process Chord Time', time: fetchDataLoad?.agvTimeDownChord1,Success: fetchDataLoad.perDownChordSuccess1,Failed: fetchDataLoad.perDownChordFail1 },
+    { label: 'Vocal Separation Time', time: fetchDataLoad?.agvTotalTimeGetVocal1,Success: fetchDataLoad.perVocalSuccess1,Failed: fetchDataLoad.perVocalFail },
+    { label: 'Generation Time', time: fetchDataLoad?.agvTotalTimeGenService1,Success: fetchDataLoad.perGenerateTSuccess1,Failed: fetchDataLoad.perGenerateTFail11},
+    { label: 'Mixer chords', time: fetchDataLoad?.agvTimeMix1 ,Success: fetchDataLoad.perMixSuccess1,Failed: fetchDataLoad.perMixFail11},
+    { label: 'Total Time', time: fetchDataLoad?.agvTotalService1,Success: fetchDataLoad.perServiceSuccess1,Failed: fetchDataLoad.perServiceFail1 },
   ];
 
   // Data for other periods (30 days, All)

@@ -93,12 +93,8 @@ const DataFetchingComponent = () => {
             } else if (value === '4') {
               filterSong = item.log.filter(song => song.total_status === statusInfo);
             }
-            
-            // Accumulate the filtered results
             return total + filterSong.length;
           }
-          
-          // If item.log is not an array, just return the current total
           return total;
         }, 0)
       : 0;
@@ -116,43 +112,7 @@ const DataFetchingComponent = () => {
   const tottalgetVocalFail = countToStatus("fail",'3');
   const tototalFailStatus = countToStatus("fail","4");
   const totalSatusSuccess = countToStatus("success",'4');
-  // Total number of failed song requests
-  // const totalSongFailedCount = responseData && responseData.data
-  //   ? responseData.data.reduce((total, item) => {
-  //       if (Array.isArray(item.log)) {
-  //         const failedSongs = item.log.filter(song => song.status === 'fail');
-  //         return total + failedSongs.length;
-  //       }
-  //       return total;
-  //     }, 0)
-  //   : 0;
-
-  // Total number of songs that already exist
-  // const totalSongExitsCount = responseData && responseData.data
-  //   ? responseData.data.reduce((total, item) => {
-  //       if (Array.isArray(item.log)) {
-  //         const existingSongs = item.log.filter(song => song.status === 'existing');
-  //         return total + existingSongs.length;
-  //       }
-  //       return total;
-  //     }, 0)
-  //   : 0;
-
-  // Total number of successful YouTube downloads
-  // const totalSongDownYoutobeSuccess = responseData && responseData.data
-  //   ? responseData.data.reduce((total, item) => {
-  //       if (Array.isArray(item.log)) {
-  //         const successfulDownloads = item.log.filter(song => song.status === 'success');
-  //         return total + successfulDownloads.length;
-  //       }
-  //       return total;
-  //     }, 0)
-  //   : 0;
-  // const timeDownLoadYoutube =   JSON.parse(responseData.data  );
-  // for(let i=0; i < responseData.)
   const dataResult2 = JSON.parse(JSON.stringify(responseData.data));
-  // dataResult2.splice(1, 1);
-    console.log("luthanhy", dataResult2);
     for (let i = 0; i < dataResult2.length; i++) {
       for (let j = 0; j < dataResult2[i].log.length; j++) {
           if (dataResult2[i].log[j].total_status === null || dataResult2[i].log[j].total_status === undefined || dataResult2[i].log[j].total_status ==="fail"|| dataResult2[i].log[j].status_download ==="existing" || dataResult2[i].log[j].status_pick_proxy === undefined || dataResult2[i].log[j].status_pick_proxy === null ) {
@@ -216,7 +176,6 @@ const DataFetchingComponent = () => {
             j--;}
       }
   }
-  console.log("7 Day data",dataResult7Day);
   const dataResult3 = dataResult2;
   function calCulator(statusInfo, dataInput) {
     let timeDownTotal = 0;
@@ -231,7 +190,6 @@ const DataFetchingComponent = () => {
     if(lengthTotal === 0){
       return 0;
     }
-    // Tính trung bình và định dạng số thập phân
     let averageTimeDown = (timeDownTotal / lengthTotal).toFixed(2) + "s";
 
     return averageTimeDown;
@@ -263,89 +221,67 @@ const DataFetchingComponent = () => {
   const agvTimeDownChord7 = calCulator('time_download_chord',dataResult7Day);
   const agvTimeMix7 = calCulator('time_mix',dataResult7Day);
   const agvTotalService7 = calCulator("time_total",dataResult7Day);
-  
-  // let timeTotalService = 0;
-    // let lengthTotalService = 0;
-
-    // for(let i = 0 ; i < responseData.data.length ; i++){
-    //   let totalTimeDownLoad1 = 0;
-    //   let lengthDown1 = responseData.data[i].log.length;
-    //  for(let j = 0;j < responseData.data[i].log.length ; j++){
-    //     //  console.log("result : ",lengthDown1)
-    //      let valueTimeDowm = responseData.data[i].log[j].time_total;
-    //      if(valueTimeDowm === null || valueTimeDowm === undefined){
-    //        valueTimeDowm = 0;
-    //       //  console.log("cc");
-    //        lengthDown1--;
-    //      }
-    //      totalTimeDownLoad1 += valueTimeDowm;
-    //    }
-      //  console.log(lengthDown1);
-      //  lengthTotalService += lengthDown1;
-      //  timeTotalService += totalTimeDownLoad1;
-      //  lengthTotalService +=  lengthDown1;
-              // console.log( "length",lengthDown1);
-      //  console.log( "length",lengthDown1);
-      //  console.log( "total",totalTimeDownLoad1);
-      //  totalTimeDownAgvYoutube += totalTimeDownLoad/lengthDown;
-      //  lengthDownYoutube = responseData.data.length+1; 
-    //  }
- 
-  // const agvTotalService = Math.floor(timeTotalService/lengthTotalService) + 's';
-
-    //  let timeGenService = 0;
-    //  let lengthTimeGenService = 0;
-     
-    // for(let i = 0 ; i < responseData.data.length ; i++){
-    //   let totalTimeGen = 0;
-    //   let lengthTimeGen = responseData.data[i].log.length;
-    //  for(let j = 0;j < responseData.data[i].log.length ; j++){
-    //     //  console.log("result : ",lengthDown1)
-    //      let valueTimeDowm = responseData.data[i].log[j].time_gen;
-    //      if(valueTimeDowm === null || valueTimeDowm === undefined){
-    //        valueTimeDowm = 0;
-    //       //  console.log("cc");
-    //       lengthTimeGen--;
-    //      }
-    //      totalTimeGen += valueTimeDowm;
-    //     //  lengthTime1 += lengthTimeGen+1;
-    //    }
-    //    lengthTimeGenService += lengthTimeGen+1;
-    //   //  lengthTotalService += lengthDown1;
-    //   timeGenService += totalTimeGen;
-    //   // console.log(lengthTime1);
-
-    //           // console.log( "length",lengthDown1);
-    //   //  console.log( "length",lengthDown1);
-    //   //  console.log( "total",totalTimeDownLoad1);
-    //   //  totalTimeDownAgvYoutube += totalTimeDownLoad/lengthDown;
-    //   //  lengthDownYoutube = responseData.data.length+1; 
-    //  }
-    // //  console.log(timeGenService);
-    //  const agvTotalTimeGenService = Math.floor(timeGenService/lengthTimeGenService )+ 's';
-
-    //  let TimeGetVocal = 0;
-    //  let lengthtimegetvocal = 0;
-    //  for(let i = 0 ; i < responseData.data.length ; i++){
-    //   let totalTimeGetVocal = 0;
-    //   let lengthTimeGetVocal = responseData.data[i].log.length;
-    //  for(let j = 0;j < responseData.data[i].log.length ; j++){
-    //     //  console.log("result : ",lengthDown1)
-    //      let valueTimeDowm = responseData.data[i].log[j].time_vocal;
-    //      if(valueTimeDowm === null || valueTimeDowm === undefined){
-    //        valueTimeDowm = 0;
-    //       //  console.log("cc");
-    //       lengthTimeGetVocal--;
-    //      }
-    //      totalTimeGetVocal += valueTimeDowm;
-    //     //  lengthTime1 += lengthTimeGen+1;
-    //    }
-    //    TimeGetVocal += totalTimeGetVocal;
-    //    lengthtimegetvocal += lengthTimeGetVocal+1;
-    //  }
-    //  console.log(timeGenService);
-      // const agvTotalTimeGetVocal = Math.floor(TimeGetVocal/lengthtimegetvocal )+ 's';
-      return {
+   
+  // cal per
+  const dataUseCalPer = JSON.parse(JSON.stringify(responseData.data));
+  for (let i = 0; i < dataUseCalPer.length; i++) {
+    for (let j = 0; j < dataUseCalPer[i].log.length; j++) {
+      const log = dataUseCalPer[i].log[j];
+      const today = new Date();
+      if (!isSameDay(log.tracking_time, today)) {
+        dataUseCalPer[i].log.splice(j, 1);
+            j--;}
+      }
+    }
+    console.log("data use cal per ",dataUseCalPer);
+    function AgvToStatus(statusInfo){
+      let numberSong = 0;
+      let totalData = 0;
+      for(let i = 0 ; i < dataUseCalPer.length;i++){
+          numberSong += (dataUseCalPer[i].log.length);
+          for(let j = 0 ; j <(dataUseCalPer[i].log.length) ;j++){
+            if(dataUseCalPer[i].log[j][statusInfo] === 'success' ||dataUseCalPer[i].log[j][statusInfo] === 'existing' ){
+              totalData++;
+            }
+          }
+      }
+      console.log("sl song",numberSong);
+      console.log("totalData",totalData);
+      return Math.round((totalData/numberSong)*100);
+    }
+  const perSuccessPickProxy1 = AgvToStatus('status_pick_proxy');
+  const perFailPickProxy1 =( 100 -perSuccessPickProxy1);
+  const perDownloadTimeSuccess1 = AgvToStatus('status_download');
+  const perDownloadFail1 = (100 - perDownloadTimeSuccess1);
+  const perDownSampleRateSuccess1  = AgvToStatus('status_down_sample_rate');
+  const perDownSampleRateFail1 = (100 - perDownSampleRateSuccess1);
+  const perDownChordSuccess1 = AgvToStatus('status_download_chords');
+  const perDownChordFail1 = 100 - perDownChordSuccess1;
+  const perVocalSuccess1 = AgvToStatus('status_vocal');
+  const perVocalFail = 100 - perVocalSuccess1;
+  const perGenerateTSuccess1 = AgvToStatus('status_gen');
+  const perGenerateTFail11 = 100 - perGenerateTSuccess1;
+  const perMixSuccess1 = AgvToStatus('mix_status');
+  const perMixFail11 = 100 - perMixSuccess1;
+  const perServiceSuccess1 = AgvToStatus("total_status");
+  const perServiceFail1 = 100 - perServiceSuccess1;
+  return {
+    perServiceSuccess1,
+    perServiceFail1,
+    perMixSuccess1,
+    perMixFail11,
+    perGenerateTSuccess1,
+    perGenerateTFail11,
+    perVocalSuccess1,
+    perVocalFail,
+    perDownChordSuccess1,
+    perDownChordFail1,
+     perDownSampleRateSuccess1,
+     perDownSampleRateFail1,
+      perDownloadTimeSuccess1,
+      perDownloadFail1,
+        perSuccessPickProxy1,
+        perFailPickProxy1,
         successCount,
         failCount,
         totalSongCount,
