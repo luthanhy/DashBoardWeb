@@ -10,7 +10,6 @@ import Footer from "examples/Footer";
 import ReportsBarChart from "examples/Charts/BarCharts/ReportsBarChart";
 import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
-
 // Data
 import reportsBarChartData from "layouts/dashboard/data/reportsBarChartData";
 import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
@@ -20,6 +19,7 @@ import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 import DataFetchingComponent from "./DataFetchingComponent";
 import PieChart from "./PieChar";
+import TableData from "./TableData";
 // import {responseData} from "./DataFetchingComponent";
 
 function Dashboard() {
@@ -28,6 +28,7 @@ function Dashboard() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
+      <TableData></TableData>
       <MDBox display="flex"  justifyContent="center" alignItems="center" py={3}  >
       <PieChart></PieChart>
     </MDBox>
@@ -213,21 +214,7 @@ function Dashboard() {
               />
             </MDBox>
           </Grid>
-          <Grid item xs={12} md={6} lg={3}>
-            <MDBox mb={1.5}>
-              <ComplexStatisticsCard
-                color="primary"
-                icon="person_add"
-                title="Số lượng bài hát không  Sử dụng được trong App"
-                count={fetchedData.tototalFailStatus}
-                percentage={{
-                  color: "success",
-                  amount: "",
-                  label: "Just updated",
-                }}
-              />
-            </MDBox>
-          </Grid>
+          
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
@@ -278,7 +265,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="primary"
                 icon="person_add"
-                title="Agv time Total"
+                title="Agv time Service"
                 count={fetchedData.agvTotalService}
                 percentage={{
                   color: "success",
@@ -332,12 +319,12 @@ function Dashboard() {
         </MDBox>
         <MDBox>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6} lg={12}>
-              <Projects />
+            <Grid item xs={12} md={6} lg={8}>
+              {/* <Projects /> */}
             </Grid>
-            {/* <Grid item xs={12} md={6} lg={4}>
-              <OrdersOverview />
-            </Grid> */}
+            <Grid item xs={12} md={6} lg={4}>
+              {/* <OrdersOverview /> */}
+            </Grid>
           </Grid>
         </MDBox>
       </MDBox>
