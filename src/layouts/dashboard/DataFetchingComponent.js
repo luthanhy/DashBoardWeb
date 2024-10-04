@@ -234,13 +234,13 @@ const DataFetchingComponent = () => {
       }
     }
     console.log("data use cal per ",dataUseCalPer);
-    function AgvToStatus(statusInfo){
+    function AgvToStatus(statusInfo,dataUseCalPerInput){
       let numberSong = 0;
       let totalData = 0;
-      for(let i = 0 ; i < dataUseCalPer.length;i++){
-          numberSong += (dataUseCalPer[i].log.length);
-          for(let j = 0 ; j <(dataUseCalPer[i].log.length) ;j++){
-            if(dataUseCalPer[i].log[j][statusInfo] === 'success' ||dataUseCalPer[i].log[j][statusInfo] === 'existing' ){
+      for(let i = 0 ; i < dataUseCalPerInput.length;i++){
+          numberSong += (dataUseCalPerInput[i].log.length);
+          for(let j = 0 ; j <(dataUseCalPerInput[i].log.length) ;j++){
+            if(dataUseCalPerInput[i].log[j][statusInfo] === 'success' ||dataUseCalPerInput[i].log[j][statusInfo] === 'existing' ){
               totalData++;
             }
           }
@@ -249,23 +249,67 @@ const DataFetchingComponent = () => {
       console.log("totalData",totalData);
       return Math.round((totalData/numberSong)*100);
     }
-  const perSuccessPickProxy1 = AgvToStatus('status_pick_proxy');
+  const perSuccessPickProxy1 = AgvToStatus('status_pick_proxy',dataUseCalPer);
   const perFailPickProxy1 =( 100 -perSuccessPickProxy1);
-  const perDownloadTimeSuccess1 = AgvToStatus('status_download');
+  const perDownloadTimeSuccess1 = AgvToStatus('status_download',dataUseCalPer);
   const perDownloadFail1 = (100 - perDownloadTimeSuccess1);
-  const perDownSampleRateSuccess1  = AgvToStatus('status_down_sample_rate');
+  const perDownSampleRateSuccess1  = AgvToStatus('status_down_sample_rate',dataUseCalPer);
   const perDownSampleRateFail1 = (100 - perDownSampleRateSuccess1);
-  const perDownChordSuccess1 = AgvToStatus('status_download_chords');
+  const perDownChordSuccess1 = AgvToStatus('status_download_chords',dataUseCalPer);
   const perDownChordFail1 = 100 - perDownChordSuccess1;
-  const perVocalSuccess1 = AgvToStatus('status_vocal');
+  const perVocalSuccess1 = AgvToStatus('status_vocal',dataUseCalPer);
   const perVocalFail = 100 - perVocalSuccess1;
-  const perGenerateTSuccess1 = AgvToStatus('status_gen');
+  const perGenerateTSuccess1 = AgvToStatus('status_gen',dataUseCalPer);
   const perGenerateTFail11 = 100 - perGenerateTSuccess1;
-  const perMixSuccess1 = AgvToStatus('mix_status');
+  const perMixSuccess1 = AgvToStatus('mix_status',dataUseCalPer);
   const perMixFail11 = 100 - perMixSuccess1;
-  const perServiceSuccess1 = AgvToStatus("total_status");
+  const perServiceSuccess1 = AgvToStatus("total_status",dataUseCalPer);
   const perServiceFail1 = 100 - perServiceSuccess1;
+
+  // cal per 7day
+  const dataUseCal1Week = JSON.parse(JSON.stringify(responseData.data));
+  for (let i = 0; i < dataUseCal1Week.length; i++) {
+    for (let j = 0; j < dataUseCal1Week[i].log.length; j++) {
+      const log = dataUseCal1Week[i].log[j];
+      if (!isWithinLast7Days(log.tracking_time)) {
+        dataUseCal1Week[i].log.splice(j, 1); // Remove if not within 7 days
+        j--; // Adjust index after splice to avoid skipping elements  
+      }
+      }
+    }
+    const perSuccessPickProxy7 = AgvToStatus('status_pick_proxy',dataUseCal1Week);
+    const perFailPickProxy7 =( 100 -perSuccessPickProxy7);
+    const perDownloadTimeSuccess7 = AgvToStatus('status_download',dataUseCal1Week);
+    const perDownloadFail7 = (100 - perDownloadTimeSuccess7);
+    const perDownSampleRateSuccess7  = AgvToStatus('status_down_sample_rate',dataUseCal1Week);
+    const perDownSampleRateFail7 = (100 - perDownSampleRateSuccess7);
+    const perDownChordSuccess7 = AgvToStatus('status_download_chords',dataUseCal1Week);
+    const perDownChordFail7 = 100 - perDownChordSuccess7;
+    const perVocalSuccess7 = AgvToStatus('status_vocal',dataUseCal1Week);
+    const perVocalFail7 = 100 - perVocalSuccess7;
+    const perGenerateTSuccess7 = AgvToStatus('status_gen',dataUseCal1Week);
+    const perGenerateTFail17 = 100 - perGenerateTSuccess7;
+    const perMixSuccess7 = AgvToStatus('mix_status',dataUseCal1Week);
+    const perMixFail17 = 100 - perMixSuccess7;
+    const perServiceSuccess7 = AgvToStatus("total_status",dataUseCal1Week);
+    const perServiceFail7 = 100 - perServiceSuccess7;
   return {
+    perSuccessPickProxy7,
+    perFailPickProxy7,
+    perDownloadTimeSuccess7,
+    perDownloadFail7,
+    perDownSampleRateSuccess7,
+    perDownSampleRateFail7,
+    perDownChordSuccess7,
+    perDownChordFail7,
+    perVocalSuccess7,
+    perVocalFail7,
+    perGenerateTSuccess7,
+    perGenerateTFail17,
+    perMixSuccess7,
+    perMixFail17,
+    perServiceSuccess7,
+    perServiceFail7,
     perServiceSuccess1,
     perServiceFail1,
     perMixSuccess1,

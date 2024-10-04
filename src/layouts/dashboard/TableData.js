@@ -15,14 +15,14 @@ const TableData = () => {
   
   // Data for "Last 7 Days"
   const agvData7 = [
-    { label: 'Pick Proxy Time', time: fetchDataLoad?.agvTimePickProxy7 },
-    { label: 'Download Time', time: fetchDataLoad?.agvTimeDownYoutube7 },
-    { label: 'Sample Rate Time', time: fetchDataLoad?.agvTimeDowmSampleRate7 },
-    { label: 'Process Chord Time', time: fetchDataLoad?.agvTimeDownChord7 },
-    { label: 'Vocal Separation Time', time: fetchDataLoad?.agvTotalTimeGetVocal7 },
-    { label: 'Generation Time', time: fetchDataLoad?.agvTotalTimeGenService7 },
-    { label: 'Mixer chords', time: fetchDataLoad?.agvTimeMix7 },
-    { label: 'Total Time', time: fetchDataLoad?.agvTotalService7 },
+    { label: 'Pick Proxy Time', time: fetchDataLoad?.agvTimePickProxy7,Success: fetchDataLoad.perSuccessPickProxy7,Failed: fetchDataLoad.perFailPickProxy7 },
+    { label: 'Download Time', time: fetchDataLoad?.agvTimeDownYoutube7 ,Success: fetchDataLoad.perDownloadTimeSuccess7,Failed: fetchDataLoad.perDownloadFail7 },
+    { label: 'Sample Rate Time', time: fetchDataLoad?.agvTimeDowmSampleRate7 ,Success: fetchDataLoad.perDownSampleRateSuccess7,Failed: fetchDataLoad.perDownSampleRateFail7},
+    { label: 'Process Chord Time', time: fetchDataLoad?.agvTimeDownChord7 ,Success: fetchDataLoad.perDownChordSuccess7,Failed: fetchDataLoad.perDownChordFail7 },
+    { label: 'Vocal Separation Time', time: fetchDataLoad?.agvTotalTimeGetVocal7,Success: fetchDataLoad.perVocalSuccess7,Failed: fetchDataLoad.perVocalFail7 },
+    { label: 'Generation Time', time: fetchDataLoad?.agvTotalTimeGenService7,Success: fetchDataLoad.perGenerateTSuccess7,Failed: fetchDataLoad.perGenerateTFail17 },
+    { label: 'Mixer chords', time: fetchDataLoad?.agvTimeMix7 ,Success: fetchDataLoad.perMixSuccess7,Failed: fetchDataLoad.perMixFail17},
+    { label: 'Total Time', time: fetchDataLoad?.agvTotalService7 ,Success: fetchDataLoad.perServiceSuccess7,Failed: fetchDataLoad.perServiceFail7 },
   ];
 
   // Data for "Today"
@@ -39,14 +39,14 @@ const TableData = () => {
 
   // Data for other periods (30 days, All)
   const agvData = [
-    { label: 'Pick Proxy Time', time: fetchDataLoad?.agvTimePickProxy },
-    { label: 'Download Time', time: fetchDataLoad?.agvTimeDownYoutube },
-    { label: 'Sample Rate Time', time: fetchDataLoad?.agvTimeDowmSampleRate },
-    { label: 'Process Chord Time', time: fetchDataLoad?.agvTimeDownChord },
-    { label: 'Vocal Separation Time', time: fetchDataLoad?.agvTotalTimeGetVocal },
-    { label: 'Generation Time', time: fetchDataLoad?.agvTotalTimeGenService },
-    { label: 'Mixer chords', time: fetchDataLoad?.agvTimeMix },
-    { label: 'Total Time', time: fetchDataLoad?.agvTotalService },
+    { label: 'Pick Proxy Time', time: fetchDataLoad?.agvTimePickProxy ,Success: fetchDataLoad.perSuccessPickProxy7,Failed: fetchDataLoad.perFailPickProxy7},
+    { label: 'Download Time', time: fetchDataLoad?.agvTimeDownYoutube,Success: fetchDataLoad.perDownloadTimeSuccess7,Failed: fetchDataLoad.perDownloadFail7 },
+    { label: 'Sample Rate Time', time: fetchDataLoad?.agvTimeDowmSampleRate,Success: fetchDataLoad.perDownSampleRateSuccess7,Failed: fetchDataLoad.perDownSampleRateFail7 },
+    { label: 'Process Chord Time', time: fetchDataLoad?.agvTimeDownChord,Success: fetchDataLoad.perDownChordSuccess7,Failed: fetchDataLoad.perDownChordFail7 },
+    { label: 'Vocal Separation Time', time: fetchDataLoad?.agvTotalTimeGetVocal,Success: fetchDataLoad.perVocalSuccess7,Failed: fetchDataLoad.perVocalFail7 },
+    { label: 'Generation Time', time: fetchDataLoad?.agvTotalTimeGenService,Success: fetchDataLoad.perGenerateTSuccess7,Failed: fetchDataLoad.perGenerateTFail17 },
+    { label: 'Mixer chords', time: fetchDataLoad?.agvTimeMix ,Success: fetchDataLoad.perMixSuccess7,Failed: fetchDataLoad.perMixFail17},
+    { label: 'Total Time', time: fetchDataLoad?.agvTotalService,Success: fetchDataLoad.perServiceSuccess7,Failed: fetchDataLoad.perServiceFail7 },
   ];
 
   // Choose which data to show based on the selected filter
