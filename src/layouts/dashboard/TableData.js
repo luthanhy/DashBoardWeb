@@ -1,18 +1,10 @@
 import React, { useState,useEffect } from 'react';
 import DataFetchingComponent from './DataFetchingComponent';
-import FetchData from './data/FetchData';
 // Component chính
 const TableData = () => {
   const fetchDataLoad = DataFetchingComponent(); // Fetch data from the API or data source
   const [fetchData, setFetchData] = useState(null);
 
-  useEffect(() => {
-    const loadData = async () => {
-      const data = await FetchData(); // Giả sử FetchData là hàm lấy dữ liệu
-      setFetchData(data);
-    };
-    loadData();
-  }, []);
   // State to store the selected time filter
   const [timeFilter, setTimeFilter] = useState('today');
   const [severFilter,setServerFilter] = useState('all');
@@ -20,10 +12,6 @@ const TableData = () => {
   const handleServerFilterChange = (e) =>{
     setServerFilter(e.target.value);
   }
-
-  console.log('======================================')
-  console.log('',fetchData.logsGroupedByNameServer);
-  console.log('======================================')
   // Handle time filter changes
   const handleTimeFilterChange = (e) => {
     setTimeFilter(e.target.value);

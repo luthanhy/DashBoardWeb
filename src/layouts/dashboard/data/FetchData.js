@@ -143,9 +143,34 @@ const FetchData = () => {
         return groupedLogs;
     }
     const logsGroupedByNameServer = groupLogsByNameServer(LogDataClean);
-    console.log(logsGroupedByNameServer);
+
+  const isSameDay = (trackingTime, dateToCompare) => {
+        const trackingDate = new Date(trackingTime);
+        
+        return (
+        trackingDate.getFullYear() === dateToCompare.getFullYear() &&
+        trackingDate.getMonth() === dateToCompare.getMonth() &&
+        trackingDate.getDate() === dateToCompare.getDate()
+        );
+  };
+  const isWithinLast7Days = (trackingTime) => {
+    const today = new Date(); 
+    const sevenDaysAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000); 
+    const trackingDate = new Date(trackingTime); 
+    return trackingDate >= sevenDaysAgo && trackingDate <= today;
+  };
+  const isWithinLast30Days = (trackingTime) => {
+    const today = new Date(); 
+    const thirtyDaysAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000); 
+    const trackingDate = new Date(trackingTime); 
+    return trackingDate >= thirtyDaysAgo && trackingDate <= today;
+  };
+
+
+
+  console.log(logsGroupedByNameServer);
     return (
-        <h1>luthanhy</h1>
+        logsGroupedByNameServer
     )
 }
 export default FetchData;

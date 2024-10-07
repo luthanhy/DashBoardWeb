@@ -23,12 +23,14 @@ import TableData from "./TableData";
 import FetchData from "./data/FetchData";
 // import {responseData} from "./DataFetchingComponent";
 function Dashboard() {
+  const dataGet = FetchData();
   const fetchedData = DataFetchingComponent();
   const { sales, tasks } = reportsLineChartData;
+  console.log(dataGet?.logsGroupedByNameServer); 
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <FetchData></FetchData>
+      <TableData></TableData>
       <MDBox display="flex"  justifyContent="center" alignItems="center" py={3}  >
       {/* <PieChart></PieChart> */}
     </MDBox>
