@@ -18,19 +18,19 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 import DataFetchingComponent from "./DataFetchingComponent";
-import PieChart from "./PieChar";
+// import PieChart from "./PieChar";
 import TableData from "./TableData";
+import FetchData from "./data/FetchData";
 // import {responseData} from "./DataFetchingComponent";
-
 function Dashboard() {
   const fetchedData = DataFetchingComponent();
   const { sales, tasks } = reportsLineChartData;
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <TableData></TableData>
+      <FetchData></FetchData>
       <MDBox display="flex"  justifyContent="center" alignItems="center" py={3}  >
-      <PieChart></PieChart>
+      {/* <PieChart></PieChart> */}
     </MDBox>
       <MDBox py={3}>
         <Grid container spacing={3}>

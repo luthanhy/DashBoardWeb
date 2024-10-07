@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import DataFetchingComponent from './DataFetchingComponent';
-
+import FetchData from './data/FetchData';
 // Component chính
 const TableData = () => {
   const fetchDataLoad = DataFetchingComponent(); // Fetch data from the API or data source
-  
+  const [fetchData, setFetchData] = useState(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      const data = await FetchData(); // Giả sử FetchData là hàm lấy dữ liệu
+      setFetchData(data);
+    };
+    loadData();
+  }, []);
   // State to store the selected time filter
   const [timeFilter, setTimeFilter] = useState('today');
+  const [severFilter,setServerFilter] = useState('all');
 
+  const handleServerFilterChange = (e) =>{
+    setServerFilter(e.target.value);
+  }
+
+  console.log('======================================')
+  console.log('',fetchData.logsGroupedByNameServer);
+  console.log('======================================')
   // Handle time filter changes
   const handleTimeFilterChange = (e) => {
     setTimeFilter(e.target.value);
@@ -73,6 +89,15 @@ const TableData = () => {
           <option value="all">All</option>
         </select>
       </div>
+      <div style={{ marginBottom: '20px' }}>
+        <label htmlFor="timeFilter">Filter by: </label>
+        <select id="timeFilter" value={timeFilter} onChange={handleTimeFilterChange}>
+          <option value="today">Today</option>
+          <option value="7days">Last 7 Days</option>
+          <option value="30days">Last 30 Days</option>
+          <option value="all">All</option>
+        </select>
+      </div>
 
       {/* AGV data table */}
       <table border="1" cellPadding="10" style={{ width: '100%', textAlign: 'left' }}>
@@ -80,8 +105,8 @@ const TableData = () => {
           <tr>
             <th>AGV Metric</th>
             <th>Time</th>
-            <th>Success</th>
-            <th>Failed</th>
+            <th>Success (%)</th>
+            <th>Failed (%)</th>
 
           </tr>
         </thead>
