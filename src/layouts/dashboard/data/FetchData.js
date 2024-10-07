@@ -126,7 +126,6 @@ const FetchData = () => {
 
     const uniqueNameServers = getUniqueNameServer(LogDataClean);
 
-    console.log("uniqueNameServers",uniqueNameServers);
 
     function groupLogsByNameServer(logs) {
         const groupedLogs = {};
@@ -142,8 +141,19 @@ const FetchData = () => {
     
         return groupedLogs;
     }
-    const logsGroupedByNameServer = groupLogsByNameServer(LogDataClean);
-
+    const logsGroupedByNameServer =  groupLogsByNameServer(LogDataClean);
+    console.log(logsGroupedByNameServer['local']); 
+    for (let i = 0; i < Object.keys(logsGroupedByNameServer).length; i++) {
+        const key = Object.keys(logsGroupedByNameServer)[i];
+        const logs = logsGroupedByNameServer[key]; 
+    
+        for (let j = 0; j < logs.length; j++) {
+            if (logs[j].total_status === null || logs[j].total_status === undefined || logs[j].total_status === "fail" || logs[j].status_download === "existing" || logs[j].status_pick_proxy === undefined || logs[j].status_pick_proxy === null) {
+                logs.splice(j, 1);
+                j--; 
+            }
+        }
+    }
   const isSameDay = (trackingTime, dateToCompare) => {
         const trackingDate = new Date(trackingTime);
         
@@ -166,9 +176,47 @@ const FetchData = () => {
     return trackingDate >= thirtyDaysAgo && trackingDate <= today;
   };
 
+  function FillDataByDay(type, data) {
+    for (let i = 0; i < Object.keys(data).length; i++) {
+        const key = Object.keys(data)[i]; // Get the current key
+        const logs = data[key]; // Get the array for this key
+    
+        for (let j = 0; j < logs.length; j++) {
+            if (type === '1') {
+                const today = new Date();
+                if (!isSameDay(logs[j].tracking_time, today)) {
+                    logs.splice(j, 1); // Remove the log if it's not from today
+                    j--; 
+                }
+            }else if(type === '2'){
+                if(!isWithinLast7Days(logs[j].tracking_time)){
+                    logs.splice(j, 1);
+                    j--;
+                }
+            }else if(type === '3'){
+                if(!isWithinLast30Days(logs[j].tracking_time)){
+                    logs.splice(j, 1);
+                    j--;
+                }
+            }
+        }
+    }
+
+    return data; // Return the modified data
+}
+
+  const rawDataOneDay = logsGroupedByNameServer;
+  const rawDataSevenDay = logsGroupedByNameServer;
+  const rawDataThirtyDay = logsGroupedByNameServer;
+
+  const dataOneDay = FillDataByDay('1',rawDataOneDay);
+  const dataSevenDay = FillDataByDay('2',rawDataSevenDay);
+  const dataThirtyDay = FillDataByDay('3',rawDataThirtyDay);
 
 
-  console.log(logsGroupedByNameServer);
+  console.log("1",dataOneDay);
+  console.log("2",dataSevenDay);
+  console.log("3",dataThirtyDay);
     return (
         logsGroupedByNameServer
     )
