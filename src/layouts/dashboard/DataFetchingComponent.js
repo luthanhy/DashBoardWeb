@@ -150,15 +150,15 @@ const DataFetchingComponent = () => {
 //       }
 //   }
 //   //7day
-//   const isWithinLast7Days = (trackingTime) => {
-//     const today = new Date(); // Current date
-//     const sevenDaysAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000); // 7 days ago timestamp
+  //   const isWithinLast7Days = (trackingTime) => {
+  //     const today = new Date(); // Current date
+  //     const sevenDaysAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000); // 7 days ago timestamp
+      
+  //     const trackingDate = new Date(trackingTime); // Convert tracking_time to Date object
     
-//     const trackingDate = new Date(trackingTime); // Convert tracking_time to Date object
-  
-//     // Return true if trackingDate is between sevenDaysAgo and today
-//     return trackingDate >= sevenDaysAgo && trackingDate <= today;
-//   };
+  //     // Return true if trackingDate is between sevenDaysAgo and today
+  //     return trackingDate >= sevenDaysAgo && trackingDate <= today;
+  //   };
 //   const dataResult7Day = JSON.parse(JSON.stringify(responseData.data));
 
 //   for (let i = 0; i < dataResult7Day.length; i++) {

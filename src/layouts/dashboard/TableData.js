@@ -1,8 +1,16 @@
 import React, { useState,useEffect } from 'react';
 import DataFetchingComponent from './DataFetchingComponent';
-// Component chính
+import FetchData from './data/FetchData';
+
 const TableData = () => {
   const fetchDataLoad = DataFetchingComponent(); // Fetch data from the API or data source
+  const fetchDataDashboard  = FetchData();
+
+
+
+  console.log('======================================')
+  console.log('',fetchDataDashboard?.luthanhy);
+  console.log('======================================')
   const [fetchData, setFetchData] = useState(null);
 
   // State to store the selected time filter
@@ -64,6 +72,7 @@ const TableData = () => {
   }
 
   return (
+    
     <div style={{ padding: '20px' }}>
       <h2>AGV Time Statistics</h2>
       

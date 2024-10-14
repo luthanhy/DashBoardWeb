@@ -142,7 +142,9 @@ const FetchData = () => {
         return groupedLogs;
     }
     const logsGroupedByNameServer =  groupLogsByNameServer(LogDataClean);
-    console.log(logsGroupedByNameServer['local']); 
+
+    console.log("",logsGroupedByNameServer);
+
     for (let i = 0; i < Object.keys(logsGroupedByNameServer).length; i++) {
         const key = Object.keys(logsGroupedByNameServer)[i];
         const logs = logsGroupedByNameServer[key]; 
@@ -205,20 +207,19 @@ const FetchData = () => {
     return data; // Return the modified data
 }
 
-  const rawDataOneDay = logsGroupedByNameServer;
-  const rawDataSevenDay = logsGroupedByNameServer;
-  const rawDataThirtyDay = logsGroupedByNameServer;
+  const rawDataOneDay =  JSON.parse(JSON.stringify(logsGroupedByNameServer));
+  const rawDataSevenDay = JSON.parse(JSON.stringify(logsGroupedByNameServer));
+  const rawDataThirtyDay = JSON.parse(JSON.stringify(logsGroupedByNameServer));
 
   const dataOneDay = FillDataByDay('1',rawDataOneDay);
   const dataSevenDay = FillDataByDay('2',rawDataSevenDay);
   const dataThirtyDay = FillDataByDay('3',rawDataThirtyDay);
-
-
-  console.log("1",dataOneDay);
-  console.log("2",dataSevenDay);
-  console.log("3",dataThirtyDay);
+  const luthanhy = 1;
     return (
-        logsGroupedByNameServer
+        luthanhy,
+        dataOneDay,
+        dataSevenDay,
+        dataThirtyDay
     )
 }
 export default FetchData;
